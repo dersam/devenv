@@ -81,3 +81,7 @@ Add a target configuration at `<org>/<repo>`:
 ```
 
 The target repository must have a `devenv.nix` file. The helper refuses paths that contain more than one slash, paths that start with `/`, and paths that end with `/`.
+
+## Roundhouse
+
+The `rubys/roundhouse` configuration includes `libyaml` and `pkg-config`. Bundler uses them to build the native extension for `psych`.

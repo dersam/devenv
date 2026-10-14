@@ -14,6 +14,7 @@
   };
 
   packages = with pkgs; [
+    libyaml
     pkg-config
     sqlite
     wrk
