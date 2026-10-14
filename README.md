@@ -85,3 +85,28 @@ The target repository must have a `devenv.nix` file. The helper refuses paths th
 ## Roundhouse
 
 The `rubys/roundhouse` configuration includes `libyaml` and `pkg-config`. Bundler uses them to build the native extension for `psych`.
+
+## Writebook
+
+The `basecamp/writebook` configuration uses Ruby `3.4.7`, SQLite, libvips, and Redis. It includes `libyaml` and `pkg-config` to build native gems.
+
+The setup task installs gems and prepares the database. It uses the Ruby version from devenv, not `mise` from the application's `bin/setup`.
+
+1. Run these commands from the Writebook directory:
+
+   ```zsh
+   devenv-allow
+   devenv tasks run writebook:setup
+   devenv up -d
+   devenv shell bin/dev
+   ```
+
+2. Open `http://localhost:3007`.
+
+3. Stop the server with `Ctrl-C`. Stop Redis with:
+
+   ```zsh
+   devenv down
+   ```
+
+Development Action Cable connects to Redis on port `6379`. This configuration binds Redis to `127.0.0.1:6379` without automatic port allocation.
