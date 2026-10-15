@@ -132,3 +132,27 @@ The setup task installs gems and prepares the database. Rails adds sample data w
 4. Stop the server with `Ctrl-C`.
 
 Fizzy uses SQLite for development Action Cable. It does not need Redis or a separate database server.
+
+## Lobsters
+
+The `lobsters/lobsters` configuration uses Ruby `4.0.0` and libvips. It includes `libyaml` and `pkg-config` to build native gems.
+
+The setup task installs gems, copies `config/database.yml.sample` if `config/database.yml` does not exist, and prepares the databases. Rails adds seed data when it creates the databases.
+
+1. Run these commands from the Lobsters directory:
+
+   ```zsh
+   devenv-allow lobsters/lobsters
+   devenv tasks run lobsters:setup
+   devenv shell bin/dev
+   ```
+
+2. Open `http://localhost:3000`.
+
+3. Log in with username `test` and password `test`.
+
+4. Stop the server with `Ctrl-C`.
+
+Lobsters uses SQLite for its databases, cache, and job queue. It does not need Redis or a separate database server.
+
+The `sqlite3` gem builds SQLite with the options in `.bundle/config`. Use `devenv shell bin/sqlite3` instead of the system SQLite client.
